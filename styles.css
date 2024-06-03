@@ -1,0 +1,80 @@
+.party {
+    max-width: 400px;
+    overflow: hidden;
+    padding-left: 8px;
+    margin-right: 4px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    height: 32px;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    font-weight: 500;
+    border: none;
+    background-color: #0065ff;
+    border-radius: 3.01px;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: flex;
+}
+
+.confetti {
+    position: absolute;
+    z-index: 1000;
+    background: hsl(var(--hue), 100%, 50%);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    opacity: 1; /* Start fully visible */
+    top: 10%;
+    right: 10%;
+    font-size: 130%;
+    padding: 3px;
+    line-height: normal;
+    text-align: center;
+    align-content: center;
+}
+
+@keyframes confetti-animation {
+    0% { transform: translateY(var(--offsetY)) translateX(0) rotate(0deg); }
+    20% {
+        transform: translateY(-10vh) translateX(var(--offsetX)) rotate(var(--spin));
+        }
+    100% {
+    transform: translateY(100vh) translateX(var(--offsetX)) rotate(var(--spin));
+        opacity: 0.4;
+    }
+}
+
+@keyframes shake-animation {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+.shake {
+    animation: shake-animation 0.8s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes enter-and-exit {
+    0% { transform: translateX(100vw); opacity: 0; }
+    20% { transform: translateX(-50%); opacity: 1; }
+    80% { transform: translateX(-55%); opacity: 1; }
+    100% { transform: translateX(-200vw); opacity: 0; }
+}
+
+.we-make-you-pay-label {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    z-index: 2000;
+    display: block;
+    animation: enter-and-exit 4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
